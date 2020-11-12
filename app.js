@@ -7,7 +7,7 @@ const client = new Discord.Client();
 // READY BOT
 //-------------------------------------
 client.on('ready', () => {
-	console.log(`logged in as ${client.user.tag}!`);
+	console.log(`Logged in as ${client.user.tag}!`);
 });
 //-------------------------------------
 // PING
