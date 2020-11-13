@@ -24,7 +24,7 @@ client.on('message', msg => {
 //-------------------------------------
 client.on('message', msg => {
     var message = msg.content;
-    var ping = 'Gay';
+    var ping = 'gay';
     if (message.toUpperCase() === ping.toUpperCase()) {
         var values = ["Ja","Nee"],
             valueToUse = values[Math.floor(Math.random() * values.length)];
