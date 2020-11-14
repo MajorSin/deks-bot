@@ -4,12 +4,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 //-------------------------------------
-// READY BOT
-//-------------------------------------
-client.on('ready', () => {
-	console.log(`Ingelogd als ${client.user.tag}!`);
-});
-//-------------------------------------
 // PING
 //-------------------------------------
 client.on('message', msg => {
@@ -54,6 +48,12 @@ client.on('message', msg => {
             valueToUse = values[Math.floor(Math.random() * values.length)];
         msg.reply(valueToUse);
     }
+});
+//-------------------------------------
+// READY BOT
+//-------------------------------------
+client.on('ready', () => {
+	console.log(`Ingelogd als ${client.user.tag}!`);
 });
 //-------------------------------------
 // TOKEN
