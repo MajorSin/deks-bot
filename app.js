@@ -40,18 +40,10 @@ client.on('message', msg => {
 //-------------------------------------
 // JOERI
 //-------------------------------------
-client.on('message', msg => {
-    var message = msg.content;
-    var ping = 'joeri';
-    if (message.toUpperCase() === ping.toUpperCase()) {
-        var values = ["Joeri stinkt.","Dombo", "Chappie"],
-            valueToUse = values[Math.floor(Math.random() * values.length)];
-        msg.reply(valueToUse);
-    }
-});
 client.on('message', async (message) => {
+    var msg = message.content;
     var joeriping = 'joeri';
-    if (message.content.toLowerCase() === joeriping.toLowerCase()) {
+    if (msg.toLowerCase() === joeriping.toLowerCase()) {
         var values = ["Joeri stinkt.","Joeri, dombo", "Joeri, chappie"],
             valueToUse = values[Math.floor(Math.random() * values.length)];
       	message.channel.send(valueToUse);
