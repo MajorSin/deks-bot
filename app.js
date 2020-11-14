@@ -44,7 +44,7 @@ client.on('message', async (message) => {
     var msg = message.content;
     var joeriping = 'joeri';
     if (msg.toLowerCase() === joeriping.toLowerCase()) {
-        var values = ["Joeri stinkt.","Joeri, dombo", "Joeri, chappie"],
+        var values = ["Joeri stinkt.","Joeri, dombo.", "Joeri, chappie."],
             valueToUse = values[Math.floor(Math.random() * values.length)];
       	message.channel.send(valueToUse);
     }
