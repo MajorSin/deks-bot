@@ -49,6 +49,14 @@ client.on('message', msg => {
         msg.reply(valueToUse);
     }
 });
+client.on('message', async (message) => {
+    var joeriping = 'joeri';
+    if (message.content.toLowerCase() === joeriping.toLowerCase()) {
+        var values = ["Joeri stinkt.","Joeri, dombo", "Joeri, chappie"],
+            valueToUse = values[Math.floor(Math.random() * values.length)];
+      	message.channel.send(valueToUse);
+    }
+});
 //-------------------------------------
 // READY BOT
 //-------------------------------------
