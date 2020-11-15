@@ -28,7 +28,7 @@ const embedchannel = new Discord.MessageEmbed()
         },
         {
             name: 'TEXT SOCIALIZE',
-            value: '- <#735966372449878029>: General chat\n- <#735966372449878032>: Voor al uw memes\n- <#735966372449878030>: Voor al uw bestanden\n- <#749717632286064800>: Minecraft coördinaten\n- <#752905120504873130>: Voor het beheren van de music bot (DJ only)/n- <#754803502693220423>: Alle bot-commands mogen hierin'
+            value: '- <#735966372449878029>: General chat\n- <#735966372449878032>: Voor al uw memes\n- <#735966372449878030>: Voor al uw bestanden\n- <#749717632286064800>: Minecraft coördinaten\n- <#752905120504873130>: Voor het beheren van de music bot (DJ only)\n- <#754803502693220423>: Alle bot-commands mogen hierin'
         },
         {
             name: 'VOICE SOCIALIZE',
