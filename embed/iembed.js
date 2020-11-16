@@ -24,7 +24,7 @@ const embedchannel = new Discord.MessageEmbed()
     .addFields(
         {
             name: 'GENERAL',
-            value: '- <#735966372256940099>: Overzicht nieuwe leden\n- <#735966372256940100>: Informatie over deze discord server\n- <#735966372256940101>: Overzicht van alle regels\n- <#735966372449878026>: Alle mededelingen komen hier. Houd dit ook in de gaten\n- <#756546015636488343>: Advertenties. Voor meer info, neem contact op met de staff team'
+            value: '- <#735966372256940099>: Overzicht nieuwe leden\n- <#735966372256940100>: Informatie over deze discord server\n- <#735966372256940101>: Overzicht van alle regels\n- <#735966372449878026>: Alle mededelingen komen hier. Houd dit ook in de gaten\n- <#756546015636488343>: Advertenties. Voor meer info, neem contact op met de staff team\n- <#777865057463042058>: Deze kanaal geeft alle updates van de bot weer'
         },
         {
             name: 'TEXT SOCIALIZE',
