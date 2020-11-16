@@ -13,7 +13,7 @@ const embedthumb = new Discord.MessageEmbed()
 //INTRO
 const embedwelcome = new Discord.MessageEmbed()
 	.setTitle('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\nWELKOM\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬')
-    .setDescription('Nieuw bij deze server? Lees de <#772462540445843498> zeker door! Hieronder zie je een overzicht van ieder kanaal en alle rollen.')
+    .setDescription('Nieuw bij deze server? Lees de <#735966372256940101> zeker door! Hieronder zie je een overzicht van ieder kanaal en alle rollen.')
     .setColor('#40b6ff')
     .setThumbnail('https://cdn.discordapp.com/attachments/777142784389545994/777577525106835466/kebabje.png');
 //CHANNELS
