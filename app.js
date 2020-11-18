@@ -3,6 +3,14 @@
 //-------------------------------------
 const Discord = require('discord.js');
 const client = new Discord.Client();
+//------------------------------
+//WELCOME MSG
+//------------------------------
+client.on('guildMemberAdd', member => {
+    const message = `Welkom <@${member.id}>! Check <#735966372256940100> voor meer informatie`;
+    const channel = member.guild.channels.cache.get('735966372256940099');
+    channel.send(message);
+});
 //-------------------------------------
 // PING
 //-------------------------------------
