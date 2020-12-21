@@ -9,22 +9,22 @@ const client = new Discord.Client();
 //FIRST THUMBNAIL
 const embedthumb = new Discord.MessageEmbed()
     .setImage('https://cdn.discordapp.com/attachments/777142784389545994/777142893273153547/unknown.png')
-    .setColor('#40b6ff');
+    .setColor('#adb198');
 //INTRO
 const embedwelcome = new Discord.MessageEmbed()
 	.setTitle('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\nWELKOM\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬')
     .setDescription('Nieuw bij deze server? Lees de <#735966372256940101> zeker door! Hieronder zie je een overzicht van ieder kanaal en alle rollen.')
-    .setColor('#40b6ff')
+    .setColor('#adb198')
     .setThumbnail('https://cdn.discordapp.com/attachments/777142784389545994/777577525106835466/kebabje.png');
 //CHANNELS
 const embedchannel = new Discord.MessageEmbed()
 	.setTitle('KANALEN')
     .setDescription('Overzicht van alle algemene kanalen:')
-    .setColor('#40b6ff')
+    .setColor('#adb198')
     .addFields(
         {
             name: 'GENERAL',
-            value: '- <#735966372256940099>: Overzicht nieuwe leden\n- <#735966372256940100>: Informatie over deze discord server\n- <#735966372256940101>: Overzicht van alle regels\n- <#735966372449878026>: Alle mededelingen komen hier. Houd dit ook in de gaten\n- <#756546015636488343>: Advertenties. Voor meer info, neem contact op met de staff team\n- <#777865057463042058>: Deze kanaal geeft alle updates van de bot weer'
+            value: '- <#735966372256940099>: Overzicht nieuwe leden\n- <#735966372256940100>: Informatie over deze discord server\n- <#735966372256940101>: Overzicht van alle regels\n- <#735966372449878026>: Alle mededelingen komen hier. Houd dit ook in de gaten\n- <#777865057463042058>: Deze kanaal geeft alle updates van de bot weer\n- <#790016203719835689>: Hier vinden alle giveaways plaats. Giveaway worden geoirganiseerd via admins.'
         },
         {
             name: 'TEXT SOCIALIZE',
@@ -39,7 +39,7 @@ const embedchannel = new Discord.MessageEmbed()
 const embedroles = new Discord.MessageEmbed()
 	.setTitle('ROLES')
     .setDescription('Overzicht van alle algemene roles:')
-    .setColor('#40b6ff')
+    .setColor('#adb198')
     .addFields(
         {
             name: 'ROLLEN',
@@ -50,7 +50,7 @@ const embedroles = new Discord.MessageEmbed()
 	.setFooter('Gemaakt door: Prabhjot | Met dank aan: Tristan, Joeri, Ben & Younes', 'https://cdn.discordapp.com/attachments/777142784389545994/777577525106835466/kebabje.png');
 //CALL ALL EMBEDS
 client.on('message', async (message) => {
-	var embedmsg = 'embed';
+	var embedmsg = 'info';
     if (message.content.toLowerCase() === embedmsg.toLowerCase()) {
       	message.channel.send(embedwelcome);
       	message.channel.send(embedchannel);
@@ -67,4 +67,4 @@ client.on('ready', () => {
 //------------------------------
 //TOKEN LOGIN
 //------------------------------
-client.login(process.env.token)
+client.login(process.env.token);
