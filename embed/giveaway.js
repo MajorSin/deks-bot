@@ -35,4 +35,4 @@ client.on('ready', () => {
 //------------------------------
 //TOKEN LOGIN
 //------------------------------
-client.login('Nzc2NDgzNTU0MTUzNDYzODUw.X61iqQ._75jMpaZeF4BBvTJnW_voC3DHhc');
+client.login(process.env.token);
