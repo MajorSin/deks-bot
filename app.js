@@ -61,6 +61,28 @@ client.on('message', async (message) => {
     }
 });
 //-------------------------------------
+// AMONG US
+//-------------------------------------
+client.on('message', (message) => {
+    if(message.member.roles.cache.find(r => r.name === "Hosts")) {
+        const shouldMute = (messageContent) => ['/mute'].includes(messageContent);
+        const shouldUnMute = (messageContent) => ['/unmute'].includes(messageContent);
+        const channel = message.channel
+        const members = channel.members
+        if (shouldMute(message.content)) {
+            members.forEach(member => {
+                member.voice.setMute(true)
+            });
+            message.channel.send('Call Muted');
+        } else if (shouldUnMute(message.content)) {
+            members.forEach(member => {
+                member.voice.setMute(false)
+            });
+            message.channel.send('Call Unmuted');
+        }
+    }
+});
+//-------------------------------------
 // READY BOT
 //-------------------------------------
 client.on('ready', () => {
