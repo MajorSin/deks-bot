@@ -13,6 +13,8 @@ client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.get('735966372256940099');
     channel.send(message);
     //ADD ROLE
+    var role = member.guild.roles.cache.find(role => role.name === "role name");
+    member.roles.add(role);
 });
 //-------------------------------------
 // PING
