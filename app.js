@@ -85,6 +85,26 @@ client.on('message', (message) => {
     }
 });
 //-------------------------------------
+// PURGE COMMAND
+//-------------------------------------
+client.on("message", message => {
+    if(message.member.roles.cache.find(r => r.name === "Moderator")) {
+        let arg = message.content.split(" ");
+        if(arg.length === 1){
+            if (arg[0].toLowerCase().startsWith("/purge")) {
+                message.reply("Selecteer een hoeveelheid.");
+            }
+        }
+        else{
+            const deleteCount = parseInt(arg[1], 10);
+            message.channel.bulkDelete(deleteCount + 1).catch();
+        }
+    }
+    else{
+        message.reply("Chappie je bent geen MOD.");
+    }
+});
+//-------------------------------------
 // READY BOT
 //-------------------------------------
 client.on('ready', () => {
