@@ -100,9 +100,6 @@ client.on("message", message => {
             message.channel.bulkDelete(deleteCount + 1).catch();
         }
     }
-    else{
-        message.reply("Chappie je bent geen MOD.");
-    }
 });
 //-------------------------------------
 // READY BOT
