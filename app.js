@@ -26,6 +26,13 @@ client.on('message', msg => {
 	  	msg.reply('Pong!');
   	}
 });
+client.on('message', msg => {
+	var message = msg.content;
+	var ping = 'pong';
+  	if (message.toUpperCase() === ping.toUpperCase()) {
+	  	msg.reply('Ping!');
+  	}
+});
 //-------------------------------------
 // TESTER
 //-------------------------------------
@@ -102,7 +109,10 @@ client.on("message", message => {
             }
         }
         else{
-            message.reply("Chappie je bent geen MOD.");
+            message.reply('Chappie, je bent geen mod')
+            .then(msg => {
+                msg.delete({ timeout: 5000 })
+            }).catch(console.error);
         }
     }
 });
