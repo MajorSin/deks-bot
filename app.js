@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv').config();
 //------------------------------
-//WELCOME SHIZZLE
+// WELCOME SHIZZLE
 //------------------------------
 client.on('guildMemberAdd', member => {
     //SEND MESSAGE
@@ -70,6 +70,37 @@ client.on('message', async (message) => {
     }
 });
 //-------------------------------------
+// COUNTER
+//-------------------------------------
+client.on("message", message => {
+    if (message.channel.id == "804377158595379240") {
+        if(!isNaN(message.content)){
+            var counterlast = counter[counter.length - 1];
+            var countercheck = counterlast["nummer"] + 1;
+            var pinger = parseInt(message.content);
+            var lastuser = counterlast["name"];
+            if(countercheck === pinger && lastuser !== message.author.id){
+                counter.push({name: message.author.id, nummer: countercheck});
+                message.react('✅');
+            }
+            else{
+                if(lastuser === message.author.id){
+                    message.react('⚠️');
+                    message.reply(`Chappie, niet nog een keer. Volgend nummer is 1`);
+                    counter.length = 0;
+                    counter.push({name: "bot", nummer: 0});
+                }
+                else{
+                    message.react('⚠️');
+                    message.reply(`Chappie, verkeerd nummer. Het moest ${countercheck} zijn. Volgend nummer is 1.`);
+                    counter.length = 0;
+                    counter.push({name: "bot", nummer: 0});
+                }
+            }
+        }
+    }
+});
+//-------------------------------------
 // AMONG US
 //-------------------------------------
 client.on('message', (message) => {
@@ -91,10 +122,10 @@ client.on('message', (message) => {
         }
     }
 });
+//------------------------------
+// BULK DELETER
+//------------------------------
 client.on("message", message => {
-    //------------------------------
-    //BULK DELETER
-    //------------------------------
     if(message.content.startsWith("/purge")){
         if(message.member.roles.cache.find(r => r.name === "Moderator")) {
             let arg = message.content.split(" ");
