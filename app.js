@@ -72,8 +72,12 @@ client.on('message', async (message) => {
 //-------------------------------------
 // COUNTER
 //-------------------------------------
+var counter = [{
+    name: "bot",
+    nummer: 0
+}];
 client.on("message", message => {
-    if (message.channel.id == "804377158595379240") {
+    if (message.channel.id == "804378504300200016") {
         if(!isNaN(message.content)){
             var counterlast = counter[counter.length - 1];
             var countercheck = counterlast["nummer"] + 1;
