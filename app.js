@@ -111,16 +111,16 @@ client.on('message', (message) => {
     if(message.member.roles.cache.find(r => r.name === "Hosts")) {
         const shouldMute = (messageContent) => ['/mute'].includes(messageContent);
         const shouldUnMute = (messageContent) => ['/unmute'].includes(messageContent);
-        const channel = message.channel
-        const members = channel.members
+        const channel = message.channel;
+        const members = channel.members;
         if (shouldMute(message.content)) {
             members.forEach(member => {
-                member.voice.setMute(true)
+                member.voice.setMute(true);
             });
             message.channel.send('Call Muted');
         } else if (shouldUnMute(message.content)) {
             members.forEach(member => {
-                member.voice.setMute(false)
+                member.voice.setMute(false);
             });
             message.channel.send('Call Unmuted');
         }
@@ -145,6 +145,69 @@ client.on("message", message => {
         }
         else{
             message.reply('Chappie, je bent geen mod')
+            .then(msg => {
+                msg.delete({ timeout: 5000 })
+            }).catch(console.error);
+        }
+    }
+});
+//------------------------------
+//KICK
+//------------------------------
+client.on("message", message =>{
+    if(message.content.startsWith("/kick")){
+        if(message.member.roles.cache.find(r => r.name === "Moderator")) {
+            let arg = message.content.split(" ");
+            var member = arg[1];
+            var reason = arg[2];
+            if(!reason){var reason = 'Geen reden gegeven';}
+            if(arg.length === 1){
+                if (arg[0].toLowerCase() === "/kick") {
+                    message.reply("Selecteer iemand.");
+                }
+            }
+            else{
+                let mentionMember = message.mentions.members.first();
+                mentionMember.kick([reason]).then((member) => {
+                    message.channel.send(`${member} is gekickt door <@${message.author.id}>. Wegens ${reason}`);
+                });
+            }
+        }
+        else{
+            message.reply("Je hebt de benodigde rol niet.")
+            .then(msg => {
+                msg.delete({ timeout: 5000 })
+            }).catch(console.error);
+        }
+    }
+});
+//------------------------------
+//BAN
+//------------------------------
+client.on("message", message =>{
+    if(message.content.startsWith("/ban")){
+        if(message.member.roles.cache.find(r => r.name === "Moderator")) {
+            let arg = message.content.split(" ");
+            var member = arg[1];
+            var reason = arg[2];
+            //EMPTY VAR
+            if(!reason){var reason = 'Geen reden gegeven';}
+            if(arg.length === 1){
+                if (arg[0].toLowerCase() === "/ban") {
+                    message.reply("Selecteer iemand.");
+                }
+            }
+            else{
+                let mentionMember = message.mentions.members.first();
+                mentionMember.ban({
+                    reason: reason
+                }).then((member) => {
+                    message.channel.send(`${member} is geband door <@${message.author.id}>. Wegens "${reason}"`);
+                });
+            }
+        }
+        else{
+            message.reply("Je hebt de benodigde rol niet.")
             .then(msg => {
                 msg.delete({ timeout: 5000 })
             }).catch(console.error);
