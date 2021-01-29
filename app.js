@@ -162,9 +162,7 @@ client.on("message", message =>{
             var reason = arg[2];
             if(!reason){var reason = 'Geen reden gegeven';}
             if(arg.length === 1){
-                if (arg[0].toLowerCase() === "/kick") {
-                    message.reply("Selecteer iemand.");
-                }
+                message.reply("Selecteer iemand.");
             }
             else{
                 let mentionMember = message.mentions.members.first();
@@ -193,9 +191,7 @@ client.on("message", message =>{
             //EMPTY VAR
             if(!reason){var reason = 'Geen reden gegeven';}
             if(arg.length === 1){
-                if (arg[0].toLowerCase() === "/ban") {
-                    message.reply("Selecteer iemand.");
-                }
+                message.reply("Selecteer iemand.");
             }
             else{
                 let mentionMember = message.mentions.members.first();
