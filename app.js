@@ -4,6 +4,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv').config();
+const ms = require('ms');
 //------------------------------
 // WELCOME SHIZZLE
 //------------------------------
@@ -107,10 +108,10 @@ client.on("message", message => {
 //-------------------------------------
 // AMONG US
 //-------------------------------------
-client.on('message', (message) => {
+/*client.on('message', (message) => {
     if(message.member.roles.cache.find(r => r.name === "Hosts")) {
-        const shouldMute = (messageContent) => ['/mute'].includes(messageContent);
-        const shouldUnMute = (messageContent) => ['/unmute'].includes(messageContent);
+        const shouldMute = (messageContent) => ['/aumute'].includes(messageContent);
+        const shouldUnMute = (messageContent) => ['/auunmute'].includes(messageContent);
         const channel = message.channel;
         const members = channel.members;
         if (shouldMute(message.content)) {
@@ -125,7 +126,7 @@ client.on('message', (message) => {
             message.channel.send('Call Unmuted');
         }
     }
-});
+});*/
 //------------------------------
 // BULK DELETER
 //------------------------------
@@ -200,6 +201,72 @@ client.on("message", message =>{
                 }).then((member) => {
                     message.channel.send(`${member} is geband door <@${message.author.id}>. Wegens "${reason}"`);
                 });
+            }
+        }
+        else{
+            message.reply("Je hebt de benodigde rol niet.")
+            .then(msg => {
+                msg.delete({ timeout: 5000 })
+            }).catch(console.error);
+        }
+    }
+});
+//------------------------------
+//MUTE
+//------------------------------
+client.on("message", message =>{
+    if(message.content.startsWith("/mute")){
+        if(message.member.roles.cache.find(r => r.name === "Moderator")) {
+            const mutedRole = message.guild.roles.cache.find((role) => role.name === 'Muted');
+            const muted = message.mentions.members.first();
+            let arg = message.content.split(" ");
+            if(arg.length === 1){
+                message.channel.send("Selecteer iemand");
+            }
+            else{
+                if (muted.roles.cache.some(role => role.name === 'Muted')){
+                    message.channel.send(`${muted} is al gemuted.`);
+                }
+                else{
+                    if(arg.length === 2){
+                        muted.roles.add(mutedRole);
+                        message.channel.send(`${muted} is gemuted.`);
+                    }
+                    else{
+                        console.log('Iemand vroeg om mute met tijd');
+                        console.log(ms(arg[2]));
+                        muted.roles.add(mutedRole)
+                        setTimeout(() => {
+                            muted.roles.remove(mutedRole);
+                            message.channel.send(`${muted} is unmuted voor ${arg[2]}.`);
+                        }, ms(arg[2]));
+                        message.channel.send(`${muted} is gemuted.`);
+                    }
+                }
+            }
+        }
+        else{
+            message.reply("Je hebt de benodigde rol niet.")
+            .then(msg => {
+                msg.delete({ timeout: 5000 })
+            }).catch(console.error);
+        }
+    }
+});
+//------------------------------
+//UNMUTE
+//------------------------------
+client.on("message", message =>{
+    if(message.content.startsWith("/unmute")){
+        if(message.member.roles.cache.find(r => r.name === "Moderator")) {
+            const mutedRole = message.guild.roles.cache.find((role) => role.name === 'Muted');
+            const muted = message.mentions.members.first();
+            if (!muted.roles.cache.some(role => role.name === 'Muted')){
+                message.channel.send(`${muted} was niet gemuted!`);
+            }
+            else{
+                muted.roles.remove(mutedRole);
+                message.channel.send(`${muted} is niet meer muted.`);
             }
         }
         else{
