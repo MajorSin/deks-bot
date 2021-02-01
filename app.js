@@ -233,14 +233,12 @@ client.on("message", message =>{
                         message.channel.send(`${muted} is gemuted.`);
                     }
                     else{
-                        console.log('Iemand vroeg om mute met tijd');
-                        console.log(ms(arg[2]));
                         muted.roles.add(mutedRole)
                         setTimeout(() => {
                             muted.roles.remove(mutedRole);
-                            message.channel.send(`${muted} is unmuted voor ${arg[2]}.`);
+                            message.channel.send(`${muted} is unmuted.`);
                         }, ms(arg[2]));
-                        message.channel.send(`${muted} is gemuted.`);
+                        message.channel.send(`${muted} is gemuted voor ${arg[2]}.`);
                     }
                 }
             }
