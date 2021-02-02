@@ -75,7 +75,7 @@ client.on('message', async (message) => {
 // COUNTER
 //-------------------------------------
 client.on("message", message => {
-    if (message.channel.id == "805843363520970792") {
+    if (message.channel.id == "804378504300200016") {
         if(!isNaN(message.content)){
             var counterData = JSON.parse(fs.readFileSync('./models/count.json', 'utf8'));
             var countercheck = counterData['nummer'] + 1;
