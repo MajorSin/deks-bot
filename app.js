@@ -5,6 +5,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv').config();
 const ms = require('ms');
+const fs = require('fs');
 //------------------------------
 // WELCOME SHIZZLE
 //------------------------------
@@ -73,33 +74,54 @@ client.on('message', async (message) => {
 //-------------------------------------
 // COUNTER
 //-------------------------------------
-var counter = [{
-    name: "bot",
-    nummer: 0
-}];
 client.on("message", message => {
-    if (message.channel.id == "804378504300200016") {
+    if (message.channel.id == "805843363520970792") {
         if(!isNaN(message.content)){
-            var counterlast = counter[counter.length - 1];
-            var countercheck = counterlast["nummer"] + 1;
+            var counterData = JSON.parse(fs.readFileSync('./models/count.json', 'utf8'));
+            var countercheck = counterData['nummer'] + 1;
+            var lastuser = counterData['name'];
             var pinger = parseInt(message.content);
-            var lastuser = counterlast["name"];
             if(countercheck === pinger && lastuser !== message.author.id){
-                counter.push({name: message.author.id, nummer: countercheck});
-                message.react('✅');
+                try{
+                    message.react('✅');
+                    let newCount = {name: message.author.id, nummer: countercheck};
+                    let data = JSON.stringify(newCount);
+                    fs.writeFileSync('./models/count.json', data);
+                } 
+                catch (error) {	
+                    console.error(error);
+                    message.channel.send('Iets ging fout');
+                    message.channel.send(error);
+                }
             }
             else{
                 if(lastuser === message.author.id){
-                    message.react('⚠️');
-                    message.reply(`Chappie, niet nog een keer. Volgend nummer is 1`);
-                    counter.length = 0;
-                    counter.push({name: "bot", nummer: 0});
+                    try{
+                        message.react('⚠️');
+                        message.reply(`Chappie, niet nog een keer. Volgend nummer is 1`);
+                        let newCount = {name: "bot", nummer: 0};
+                        let data = JSON.stringify(newCount);
+                        fs.writeFileSync('./models/count.json', data);
+                    } 
+                    catch (error) {	
+                        console.error(error);
+                        message.channel.send('Iets ging fout');
+                        message.channel.send(error);
+                    }
                 }
                 else{
-                    message.react('⚠️');
-                    message.reply(`Chappie, verkeerd nummer. Het moest ${countercheck} zijn. Volgend nummer is 1.`);
-                    counter.length = 0;
-                    counter.push({name: "bot", nummer: 0});
+                    try{
+                        message.react('⚠️');
+                        message.reply(`Chappie, verkeerd nummer. Het moest ${countercheck} zijn. Volgend nummer is 1.`);
+                        let newCount = {name: "bot", nummer: 0};
+                        let data = JSON.stringify(newCount);
+                        fs.writeFileSync('./models/count.json', data);
+                    } 
+                    catch (error) {	
+                        console.error(error);
+                        message.channel.send('Iets ging fout');
+                        message.channel.send(error);
+                    }
                 }
             }
         }
