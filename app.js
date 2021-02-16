@@ -90,6 +90,7 @@ client.on("message", message => {
                 } 
                 catch (error) {	
                     console.error(error);
+                    message.react('⚠️');
                     message.channel.send('Iets ging fout');
                     message.channel.send(error);
                 }
@@ -105,6 +106,7 @@ client.on("message", message => {
                     } 
                     catch (error) {	
                         console.error(error);
+                        message.react('⚠️');
                         message.channel.send('Iets ging fout');
                         message.channel.send(error);
                     }
@@ -119,6 +121,7 @@ client.on("message", message => {
                     } 
                     catch (error) {	
                         console.error(error);
+                        message.react('⚠️');
                         message.channel.send('Iets ging fout');
                         message.channel.send(error);
                     }
@@ -130,25 +133,23 @@ client.on("message", message => {
 //-------------------------------------
 // AMONG US
 //-------------------------------------
-/*client.on('message', (message) => {
-    if(message.member.roles.cache.find(r => r.name === "Hosts")) {
-        const shouldMute = (messageContent) => ['/aumute'].includes(messageContent);
-        const shouldUnMute = (messageContent) => ['/auunmute'].includes(messageContent);
+client.on('message', (message) => {
+    if(message.member.roles.cache.find(r => r.name === "Hosts") && message.channel.id == "777136057384173568") {
         const channel = message.channel;
-        const members = channel.members;
-        if (shouldMute(message.content)) {
-            members.forEach(member => {
+        if (message.content == "/aumute") {
+            message.channel.members.forEach(member => {
                 member.voice.setMute(true);
             });
-            message.channel.send('Call Muted');
-        } else if (shouldUnMute(message.content)) {
-            members.forEach(member => {
+            message.reply('Call Muted');
+        }
+        else if (message.content == "/auunmute") {
+            message.channel.members.forEach(member => {
                 member.voice.setMute(false);
             });
-            message.channel.send('Call Unmuted');
+            message.reply('Call Unmuted');
         }
     }
-});*/
+});
 //------------------------------
 // BULK DELETER
 //------------------------------
